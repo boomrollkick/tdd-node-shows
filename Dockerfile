@@ -28,8 +28,8 @@ RUN mkdir /opt/node_app && chown node:node /opt/node_app
 WORKDIR /opt/node_app
 ENV PATH /opt/node_app/.bin:$PATH
 USER node
-COPY ./node_app/package.json ./node_app/pnpm-lock.yaml ./
-RUN pnpm install
+COPY ./node_app/package.json ./node_app/npm-lock.yaml ./
+RUN npm install
 
 # check every 30s to ensure this service returns HTTP 200
 HEALTHCHECK --interval=30s CMD node healthcheck.js
